@@ -31,6 +31,7 @@ document.getElementById("primerButton").addEventListener("click", function () {
     const sequence = document.getElementById("sequence").value;
     const primerLength = parseInt(document.getElementById("primerLength").value);
     const desiredTm = parseInt(document.getElementById("desiredTm").value);
+    const amplifiedRegionLength = parseInt(document.getElementById("amplifiedRegionLength").value);
 
     // Function to calculate the reverse complement of a DNA sequence
     function reverseComplement(sequence) {
@@ -57,12 +58,22 @@ document.getElementById("primerButton").addEventListener("click", function () {
     // Calculate the midpoint of the sequence
     const midpoint = Math.floor(sequenceLength / 2);
 
+    // Calculate the start and end positions for the amplified region
+    const regionStart = midpoint - amplifiedRegionLength / 2;
+    const regionEnd = midpoint + amplifiedRegionLength / 2;
+
+    if (regionStart < 0 || regionEnd > sequenceLength) {
+        alert("Desired amplified region length exceeds the sequence length.");
+        return;
+    }
+
     // Extract sequences for forward and reverse primers
-    const forwardPrimer = sequence.slice(midpoint - primerLength / 2, midpoint + primerLength / 2);
-    const reversePrimer = reverseComplement(forwardPrimer);
+    const forwardPrimer = sequence.slice(regionStart, regionStart + primerLength);
+    const reversePrimer = reverseComplement(sequence.slice(regionEnd - primerLength, regionEnd));
 
     // Display the generated primers
     document.getElementById("forwardPrimer").textContent = forwardPrimer;
     document.getElementById("reversePrimer").textContent = reversePrimer;
     document.getElementById("primerResults").style.display = "block";
 });
+

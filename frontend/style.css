@@ -38,6 +38,19 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 7px rgb(0,0,0,0.15);
 }
+.title-headtitle{
+    background: #768094;
+    color: #faf7f7;
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+    border:none;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.2s;
+}
 #app{
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);

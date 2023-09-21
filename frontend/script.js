@@ -27,3 +27,42 @@ document.getElementById("generateButton").addEventListener("click", function () 
 
     alert("FASTA file generated and downloaded!");
 });
+document.getElementById("primerButton").addEventListener("click", function () {
+    const sequence = document.getElementById("sequence").value;
+    const primerLength = parseInt(document.getElementById("primerLength").value);
+    const desiredTm = parseInt(document.getElementById("desiredTm").value);
+
+    // Function to calculate the reverse complement of a DNA sequence
+    function reverseComplement(sequence) {
+        const complementMap = {
+            A: 'T',
+            T: 'A',
+            G: 'C',
+            C: 'G',
+        };
+
+        return sequence.split('').reverse().map(base => complementMap[base]).join('');
+    }
+
+    // Check if the input sequence is valid (contains only A, T, G, and C)
+    const validSequence = /^[ATGC]+$/.test(sequence);
+
+    if (!validSequence) {
+        alert("Invalid DNA sequence. Please use only A, T, G, and C.");
+        return;
+    }
+
+    const sequenceLength = sequence.length;
+
+    // Calculate the midpoint of the sequence
+    const midpoint = Math.floor(sequenceLength / 2);
+
+    // Extract sequences for forward and reverse primers
+    const forwardPrimer = sequence.slice(midpoint - primerLength / 2, midpoint + primerLength / 2);
+    const reversePrimer = reverseComplement(forwardPrimer);
+
+    // Display the generated primers
+    document.getElementById("forwardPrimer").textContent = forwardPrimer;
+    document.getElementById("reversePrimer").textContent = reversePrimer;
+    document.getElementById("primerResults").style.display = "block";
+});

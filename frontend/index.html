@@ -37,6 +37,32 @@
             </div>
         </div>
     </div>
+    <div class="form-body">
+        <div class="form">
+            <form id="fastaForm">
+                <div>
+                    <label for="sequence">DNA Sequence:</label>
+                    <textarea id="sequence" rows="4" cols="50"></textarea>
+                </div>
+                <div>
+                    <label for="primerLength">Primer Length:</label>
+                    <input type="number" id="primerLength" min="1" value="20">
+                </div>
+                <div>
+                    <label for="desiredTm">Desired Melting Temperature (Tm):</label>
+                    <input type="number" id="desiredTm" min="1" value="60">
+                </div>
+                <div>
+                    <button type="button" id="primerButton">Generate Primers</button>
+                </div>
+            </form>
+            <div id="primerResults" style="display: none;">
+                <h2>Generated Primers:</h2>
+                <p>Forward Primer: <span id="forwardPrimer"></span></p>
+                <p>Reverse Primer: <span id="reversePrimer"></span></p>
+            </div>
+        </div>
+    </div>
     <!-- Link the JavaScript file -->
     <script src="script.js"></script>
 </body>

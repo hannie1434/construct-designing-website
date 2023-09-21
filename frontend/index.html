@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Construct Design</title>
+</head>
+<body>
+    <h1 class="title">Create Constructs</h1>
+    <div class="form-body">
+        <div class="form">
+            <form id="fastaForm">
+                <div class="form-group">
+                    <label for="sequence4">Name of Construct:</label>
+                    <textarea id="sequence4" rows="4" cols="50"></textarea>
+                </div>
+                <div>
+                    <label for="sequence1">Upstream :</label>
+                    <textarea id="sequence1" rows="4" cols="50"></textarea>
+                </div>
+                <div>
+                    <label for="sequence2">Bar Code:</label>
+                    <textarea id="sequence2" rows="4" cols="50"></textarea>
+                </div>
+                <div>
+                    <label for="sequence3">Downstream:</label>
+                    <textarea id="sequence3" rows="4" cols="50"></textarea>
+                </div>
+                <div>
+                    <button type="button" id="generateButton">Generate FASTA</button>
+                </div>
+            </form>
+        
+            <div id="downloadLink" style="display: none;">
+                <a id="downloadAnchor" style="display: none;">Download FASTA File</a>
+            </div>
+        </div>
+    </div>
+    <!-- Link the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
